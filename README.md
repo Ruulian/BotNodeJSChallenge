@@ -1,4 +1,4 @@
-# BotNodeJSChallenge
+# Node JS bot for challenges
 I had to code a bot for challenges which I created. It must get all url with specific cookies in a database and delete the table content every 2 minutes.
 There are 2 ways that I found to do this. I can make a code that will be executed by CRON or make a code with a loop and a timeout.
 
