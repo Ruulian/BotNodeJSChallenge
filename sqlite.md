@@ -135,3 +135,12 @@ db.all('SELECT id,url FROM '+table, (err, rows) => {
 db.close();
 
 ```
+Cron command:
+```bash
+*/2 * * * * /path/to/launcher/launch_bots.sh > /path/to/logs/logs.txt # You can launch the bot with .sh file if you have several bots
+```
+Sh file:
+```bash
+# You have to put the full path of node binary and bot file
+/bin/node /path/to/bot/bot.js
+```
