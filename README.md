@@ -27,7 +27,7 @@ function checkForMessage() {
     const getPage = async (url) => {
         const browser = await puppeteer.launch({ executablePath: '/usr/bin/chromium-browser'});
         const page = await browser.newPage();
-        const cookies = {'name' : 'flag', 'value' : 'FLAG', 'url' : domain};
+        const cookies = {'name' : 'flag', 'value' : 'F4k3_Fl4g', 'url' : domain};
         await page.setCookie(cookies);
         await page.goto(url);
         await browser.close();
@@ -57,7 +57,7 @@ setInterval(function() {
     checkForMessage();
 }, minutes * 60 * 1000);
 ```
-
+And you just have to launch it as a service
 
 With CRON
 ```js
@@ -107,16 +107,10 @@ conn.query("DELETE FROM " + table, function (err, result) {
 ```
 CRON:
 ```bash
-*/2 * * * * /home/ubuntu/bots/launch_bots.sh > /home/ubuntu/bots/logs.txt # I launch all of my bots with a sh file
+*/2 * * * * /path/to/launcher/launch_bots.sh > /path/to/logs/logs.txt # You can launch with sh file if you have several bots
 ```
 sh file content
 ```sh
-# Put the full path of node and bots
+# Put the full path of node binary and bot file
 /bin/node /home/ubuntu/bots/bot1.js
-sleep 5
-/bin/node /home/ubuntu/bots/bot2.js
-sleep 5
-/bin/node /home/ubuntu/bots/bot3.js
-sleep 5
-/bin/node /home/ubuntu/bots/bot4.js 
 ```
