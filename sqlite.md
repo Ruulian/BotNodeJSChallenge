@@ -112,34 +112,26 @@ async function browse(url) {
 }
 
 // Check and clear table
-async function checkForMessage() {
-  db = new sqlite3.Database(database_file);
+db = new sqlite3.Database(database_file);
 
-  db.all('SELECT id,url FROM '+table, (err, rows) => {
-    if (err) {
-      console.error('Error fetching results');
-      return;
-    }
-    if (rows.length == 0) {
-      console.log("No URL in database.");
-      return;
-    } else {
-      let stmt = db.prepare('DELETE FROM '+table+' WHERE id = ?');
-      rows.forEach(async (row) => {
-        stmt.run(row.id);
-        await browse(row.url);
-      });
-      stmt.finalize();
-    }
-  });
+db.all('SELECT id,url FROM '+table, (err, rows) => {
+  if (err) {
+    console.error('Error fetching results');
+    return;
+  }
+  if (rows.length == 0) {
+    console.log("No URL in database.");
+    return;
+  } else {
+    let stmt = db.prepare('DELETE FROM '+table+' WHERE id = ?');
+    rows.forEach(async (row) => {
+      stmt.run(row.id);
+      await browse(row.url);
+    });
+    stmt.finalize();
+  }
+});
 
-  db.close();
-}
+db.close();
 
-// Infinite loop with timer
-let minutes = 2;
-setInterval(function() {
-    console.log("Check for messages");
-    checkForMessage();
-}, minutes * 60 * 1000);
 ```
