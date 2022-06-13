@@ -1,0 +1,18 @@
+{
+    "bot":{
+        "cookies":{
+            "name":"flag",
+            "value":"flag{F4k3_Fl4g}",
+            "domain":"https://example.domain.com",
+            "secure":false,
+            "httpOnly":false
+        },
+        "frequency":2
+    },
+    "database":{
+        "username":"username",
+        "password":"password",
+        "table":"table",
+        "database_name":"database_name"
+    }
+}
