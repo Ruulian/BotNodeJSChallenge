@@ -34,6 +34,6 @@ async function browse(url) {
 let minutes = config.bot.frequency;
 
 setInterval(function() {
-    console.log("Check for messages");
+    console.log(`Getting ${config.bot.target}`);
     browse(config.bot.target);
 }, minutes * 60 * 1000);
